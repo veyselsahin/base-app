@@ -13,3 +13,7 @@ RUN apt install -y php7.2 php7.2-fpm php7.2-cli php7.2-mbstring php7.2-intl php7
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt install -y nodejs
 RUN npm install -g forever babel-loader node-babel
+RUN yes | pecl install xdebug \
+    && echo "zend_extension=$(find /usr/lib/php/20170718/ -name xdebug.so)" > /etc/php/7.2/fpm/conf.d/xdebug.ini \
+    && echo "xdebug.remote_enable=on" >> /etc/php/7.2/fpm/conf.d/xdebug.ini \
+    && echo "xdebug.remote_autostart=off" >> /etc/php/7.2/fpm/conf.d/xdebug.ini
