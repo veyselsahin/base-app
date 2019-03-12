@@ -22,4 +22,5 @@ RUN yes | pecl install xdebug \
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
+RUN cp ./composer.phar /usr/bin/composer
 RUN ./composer.phar global require hirak/prestissimo
