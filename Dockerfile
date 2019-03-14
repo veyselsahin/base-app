@@ -15,6 +15,7 @@ RUN apt install -y nodejs
 RUN npm install -g forever babel-loader node-babel
 RUN mkdir -p /web
 RUN yes | pecl install xdebug \
+    && echo "[XDebug]" > /etc/php/7.2/fpm/conf.d/xdebug.ini \
     && echo "zend_extension=$(find /usr/lib/php/ -name xdebug.so)" > /etc/php/7.2/fpm/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /etc/php/7.2/fpm/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /etc/php/7.2/fpm/conf.d/xdebug.ini
