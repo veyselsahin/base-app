@@ -24,4 +24,4 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN cp ./composer.phar /usr/bin/composer
 RUN ./composer.phar global require hirak/prestissimo
-
+CMD /etc/init.d/php7.2-fpm restart
